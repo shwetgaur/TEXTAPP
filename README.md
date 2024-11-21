@@ -5,7 +5,7 @@ A professional-grade text messaging application.
 ## Features
 - Real-time messaging with WebSockets
 - React-based frontend
-- Django or Node.js backend
+- Django 
 - Cassandra database
 
 ## Setup
