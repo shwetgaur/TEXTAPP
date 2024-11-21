@@ -123,4 +123,7 @@ npm start
    npm start
    ```
 
+## License
+This project is closed-source. All rights are reserved, and no part of the code may be copied, distributed, modified, or used without explicit permission.
+
 
