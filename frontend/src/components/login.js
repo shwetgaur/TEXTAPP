@@ -4,18 +4,21 @@ function Login({ onLogin }) {
     const [username, setUsername] = useState("");
 
     const handleLogin = () => {
-        // Pass the username to the onLogin function (which is actually setUser in App.js)
-        onLogin({ username });
+        if (username.trim()) {
+            onLogin({ username });
+        } else {
+            alert("Enter a username");
+        }
     };
 
     return (
-        <div>
-            <h2>Login</h2>
+        <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <h1>Login</h1>
             <input
                 type="text"
+                placeholder="Enter username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your username"
             />
             <button onClick={handleLogin}>Login</button>
         </div>

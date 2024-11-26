@@ -1,20 +1,15 @@
-import React, { useState } from "react";
-import Login from "./components/login";
-import ChatApp from "./components/chatapp";
+import React, { useState } from 'react';
+import ChatApp from './components/chatapp';
+import Login from './components/login';
 
 function App() {
-    const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    if (!user) {
-        return <Login onLogin={setUser} />;
-    }
-
-    return (
-        <div className="app">
-            <h1>Welcome, {user.username}!</h1>
-            <ChatApp user={user} />
-        </div>
-    );
+  return (
+    <div>
+      {isLoggedIn ? <ChatApp /> : <Login onLogin={() => setIsLoggedIn(true)} />}
+    </div>
+  );
 }
 
 export default App;
