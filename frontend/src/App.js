@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Login from './components/Login';
-import ChatApp from './components/ChatApp';
+import Login from './components/login';
+import ChatApp from './components/chatapp';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
