@@ -1,32 +1,17 @@
-import React, { useState } from 'react';
-import styles from './styles/Sidebar.module.css';
+// Sidebar.js
+import React from "react";
 
-function Sidebar({ onChatSelect }) {
-  const [search, setSearch] = useState('');
-  const users = ['Alice', 'Bob', 'Charlie'];
-
-  const filteredUsers = users.filter((user) =>
-    user.toLowerCase().includes(search.toLowerCase())
-  );
-
+const Sidebar = ({ users, setActiveChat }) => {
   return (
-    <div className={styles.sidebar}>
-      <input
-        type="text"
-        className={styles.searchInput}
-        placeholder="Search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <ul className={styles.userList}>
-        {filteredUsers.map((user, index) => (
-          <li key={index} onClick={() => onChatSelect(user)}>
-            {user}
-          </li>
-        ))}
-      </ul>
+    <div className="sidebar">
+      <h2>Chats</h2>
+      {users.map(user => (
+        <div key={user.id} onClick={() => setActiveChat(user)}>
+          {user.name}
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default Sidebar;

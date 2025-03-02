@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
-import Sidebar from './Sidebar';
-import ChatWindow from './ChatWindow';
-import styles from './styles/ChatApp.module.css';
+import React, { useState } from "react";
+import ChatWindow from "./ChatWindow";
+import SearchUsers from "./SearchUsers";
 
-function ChatApp() {
-  const [activeChat, setActiveChat] = useState(null);
-
-  const handleChatSelect = (chat) => {
-    setActiveChat(chat);
-  };
+const ChatApp = () => {
+  const [selectedUser, setSelectedUser] = useState(null);
 
   return (
-    <div className={styles.chatApp}>
-      <Sidebar onChatSelect={handleChatSelect} />
-      {activeChat ? <ChatWindow chat={activeChat} /> : <div className={styles.noChat}>Select a chat</div>}
+    <div style={{ display: "flex" }}>
+      <div style={{ width: "30%", borderRight: "1px solid gray", padding: "10px" }}>
+        <h2>Search Users</h2>
+        <SearchUsers onSelectUser={setSelectedUser} />
+      </div>
+      <div style={{ width: "70%", padding: "10px" }}>
+        {selectedUser ? (
+          <ChatWindow user={selectedUser} />
+        ) : (
+          <h2>Select a user to start chatting</h2>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default ChatApp;
