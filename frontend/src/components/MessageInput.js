@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
-import styles from './styles/ChatApp.module.css';
+// src/components/MessageInput.js
+import React, { useState } from "react";
 
-function MessageInput({ onSend }) {
-  const [message, setMessage] = useState('');
+const MessageInput = ({ onSendMessage }) => {
+  const [text, setText] = useState("");
 
   const handleSend = () => {
-    if (message.trim()) {
-      onSend(message);
-      setMessage('');
+    if (text.trim()) {
+      onSendMessage(text);
+      setText("");
     }
   };
 
   return (
-    <div className={styles.messageInput}>
+    <div style={{ display: "flex", padding: "10px" }}>
       <input
         type="text"
-        className={styles.input}
-        placeholder="Type a message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Type a message..."
+        style={{ flex: 1, padding: "10px" }}
       />
-      <button className={styles.sendButton} onClick={handleSend}>
-        Send
-      </button>
+      <button onClick={handleSend} style={{ marginLeft: "10px", padding: "10px" }}>Send</button>
     </div>
   );
-}
+};
 
 export default MessageInput;

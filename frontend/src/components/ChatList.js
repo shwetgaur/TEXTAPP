@@ -1,15 +1,15 @@
-import React from 'react';
-import styles from './ChatList.module.css';
+// src/components/ChatList.js
+import React from "react";
 
-const ChatList = () => {
+const ChatList = ({ users, onSelectUser }) => {
   return (
-    <div className={styles.chatList}>
-      <h3>Chats</h3>
-      <ul>
-        <li>User 1</li>
-        <li>User 2</li>
-        <li>User 3</li>
-      </ul>
+    <div style={{ width: "30%", borderRight: "1px solid #ccc", padding: "10px" }}>
+      <h3>Search Users</h3>
+      {users.map((user) => (
+        <div key={user.uid} style={{ padding: "10px", cursor: "pointer", borderBottom: "1px solid #eee" }} onClick={() => onSelectUser(user)}>
+          {user.displayName}
+        </div>
+      ))}
     </div>
   );
 };
